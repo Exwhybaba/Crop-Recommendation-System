@@ -5,7 +5,7 @@ import pickle
 import base64
 
 # Load model and preprocessing components
-model_path = "model.sav"
+model_path = r"C:\Users\HomePC\Documents\weed_detect\mini_project\model.sav"
 with open(model_path, mode='rb') as file:
     loaded_model, encoder, scaler, normalizer = pickle.load(file)
 
@@ -49,7 +49,7 @@ def encode_image_as_base64(image_path):
 def app():
     # Background image using custom CSS
     background_image_style = f"""
-        background-image: url("data:image/jpeg;base64,{encode_image_as_base64("white.jpg")}");  
+        background-image: url("data:image/jpeg;base64,{encode_image_as_base64("C:/Users/HomePC/Documents/weed_detect/mini_project/white.jpg")}");  
         background-size: cover;
         padding: 20px;
     """
@@ -73,6 +73,32 @@ def app():
                 text-align: center;
                 margin-top: 20px;
             }}
+            .sidebar .sidebar-content {{
+                background-color: #f0f0f5;
+                padding: 20px;
+            }}
+            .sidebar .sidebar-content h2 {{
+                color: #2E8B57;
+                text-align: center;
+                margin-bottom: 20px;
+            }}
+            .sidebar .sidebar-content .markdown-text-container ul {{
+                list-style-type: none;
+                padding: 0;
+            }}
+            .sidebar .sidebar-content .markdown-text-container ul li {{
+                font-size: 16px;
+                margin-bottom: 10px;
+                color: #333;
+            }}
+            .stSlider > label {{
+                color: #000000 !important;
+                font-weight: bold;
+            }}
+            .css-1n543e5 {{
+                font-size: 16px;
+                color: #000000 !important;
+            }}
         </style>
         """,
         unsafe_allow_html=True,
@@ -93,15 +119,15 @@ def app():
     # Sliders for user input
     col1, col2 = st.columns(2)
     with col1:
-        Nitrogen = st.slider("Nitrogen", 0.0, 140.0, 50.0, 0.1)
-        Phosphorus = st.slider("Phosphorus", 5.0, 145.0, 54.0, 0.1)
-        Calcium = st.slider("Calcium", 5.0, 205.0, 48.0, 0.1)
-        temperature = st.slider("Temperature", 8.0, 44.0, 25.6, 0.1)
+        Nitrogen = st.slider("**Nitrogen**", 0.0, 140.0, 50.0, 0.1)
+        Phosphorus = st.slider("**Phosphorus**", 5.0, 145.0, 54.0, 0.1)
+        Calcium = st.slider("**Calcium**", 5.0, 205.0, 48.0, 0.1)
+        temperature = st.slider("**Temperature**", 8.0, 44.0, 25.6, 0.1)
 
     with col2:
-        humidity = st.slider("Humidity", 14.0, 100.0, 71.4, 0.1)
-        ph = st.slider("pH", 3.0, 10.0, 6.0, 0.1)
-        rainfall = st.slider("Rainfall", 20.2, 299.0, 103.0, 0.1)
+        humidity = st.slider("**Humidity**", 14.0, 100.0, 71.4, 0.1)
+        ph = st.slider("**pH**", 3.0, 10.0, 6.0, 0.1)
+        rainfall = st.slider("**Rainfall**", 20.2, 299.0, 103.0, 0.1)
 
     # Button to trigger prediction
     if st.button('🚀 Predict Crop Recommendation', key='prediction_button', help="Click to predict crop recommendation"):
