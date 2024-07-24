@@ -5,7 +5,7 @@ import pickle
 import base64
 
 # Load model and preprocessing components
-model_path = r"C:\Users\HomePC\Documents\weed_detect\mini_project\model.sav"
+model_path = "model.sav"
 with open(model_path, mode='rb') as file:
     loaded_model, encoder, scaler, normalizer = pickle.load(file)
 
@@ -49,7 +49,7 @@ def encode_image_as_base64(image_path):
 def app():
     # Background image using custom CSS
     background_image_style = f"""
-        background-image: url("data:image/jpeg;base64,{encode_image_as_base64("C:/Users/HomePC/Documents/weed_detect/mini_project/white.jpg")}");  
+        background-image: url("data:image/jpeg;base64,{encode_image_as_base64("white.jpg")}");  
         background-size: cover;
         padding: 20px;
     """
